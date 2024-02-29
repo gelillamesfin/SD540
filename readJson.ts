@@ -19,7 +19,7 @@ class Names extends EventEmitter {
 
     persist(){
         try{
-        const dataStr=JSON.stringify(this.data,null,2);
+        const dataStr=JSON.stringify(this.data);
         writeFileSync("./data.json",dataStr);
         const event= new EventEmitter();
   event.emit("data_saved",dataStr);
@@ -52,8 +52,8 @@ return this.data
 }
     
 const names= new Names();
-    //names.addName(3, "gelilla");
-    names.deleteNameById(3)
+    names.addName(3, "gelilla");
+    //names.deleteNameById(3)
 
 names.on('data_saved',message=>{
     console.log(message);
